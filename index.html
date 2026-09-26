@@ -1,6 +1,6 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Specific Heats Cv and Cp Interactive Thermodynamics Simulation | Assoc. Prof. Ts. Dr. Ang Kiang Long</title>
 <meta name="author" content="Assoc. Prof. Ts. Dr. Ang Kiang Long">
-<meta name="description" content="Interactive thermodynamics teaching simulation by Assoc. Prof. Ts. Dr. Ang Kiang Long demonstrating the physical difference between constant-volume specific heat Cv and constant-pressure specific heat Cp for an ideal gas.">
+<meta name="description" content="Interactive thermodynamics teaching simulation by Assoc. Prof. Ts. Dr. Ang Kiang Long demonstrating the physical difference between constant-volume specific heat Cv and constant-pressure specific heat Cp using air modeled as an ideal gas.">
 <meta name="keywords" content="Ang Kiang Long, Dr Ang Kiang Long, thermodynamics, specific heat, Cv, Cp, ideal gas, constant volume, constant pressure, engineering education, interactive simulation, i-CATS University College">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#f6f7f9">
@@ -9,7 +9,11 @@
 <meta property="og:description" content="An interactive teaching simulation demonstrating Cv and Cp for an ideal gas, developed by Assoc. Prof. Ts. Dr. Ang Kiang Long.">
 <meta property="og:site_name" content="Thermodynamics Interactive Learning — Dr. Ang Kiang Long">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#25323a;background:#fff}.app{max-width:1050px;margin:8px auto;padding:28px 30px;background:#f6f7f9;border-radius:44px;position:relative}.top{display:grid;grid-template-columns:1fr 1px 1fr;gap:38px}.divider{background:#dfe4e8}h2{font-size:19px;margin:4px 0}.sub{font-size:14px;color:#66737c;min-height:38px}.pause{position:absolute;right:20px;top:18px;border:0;border-radius:50%;width:58px;height:58px;font-size:22px;font-weight:bold;cursor:pointer}.scene{height:380px;position:relative}.cyl{position:absolute;width:205px;height:145px;left:50%;transform:translateX(-50%);bottom:126px;border:6px solid #50626a;border-top:0;border-radius:0 0 12px 12px;background:#fafbfc}.piston{position:absolute;height:15px;left:-12px;right:-12px;bottom:100%;background:#405158;transition:bottom .35s}.rod{position:absolute;width:14px;height:60px;left:50%;bottom:100%;transform:translateX(-50%);background:#50626a}.dot{position:absolute;width:11px;height:11px;border-radius:50%;background:#18b7c9}.heat{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);font-size:20px;color:#ff5a45;font-weight:bold}.pressure{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:82px;height:82px;border-radius:50%;background:#e7eaee;text-align:center;padding-top:20px;font-size:11px;color:#77828a}.pressure b{display:block;font-size:18px;color:#18242a}.chart{position:absolute;width:215px;height:155px;bottom:-6px;right:-38px;background:#fafbfc;border:1px solid #d9dde1;border-radius:10px;padding:9px;z-index:5}.chart svg{width:100%;height:120px}.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #d9dee4;border-bottom:1px solid #d9dee4;margin:0 -30px}.stat{text-align:center;padding:20px 8px;font-size:19px}.stat b{display:block;font-size:23px;margin-top:7px;color:#111}.work b{color:#25a94f}.controls{padding-top:30px}.qrow{display:flex;justify-content:space-between;font-size:21px;margin-bottom:12px}.qrow output{font-size:23px;color:#111}input[type=range]{width:100%;accent-color:#3978ef}.presets{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:25px}.preset{border:0;background:#e8ecf1;border-radius:24px;padding:10px 18px;font-weight:bold;font-size:16px;cursor:pointer}.note{font-size:12px;color:#66737c;margin-top:18px;line-height:1.45}@media(max-width:780px){.app{padding:18px;border-radius:24px}.top{grid-template-columns:1fr}.divider{height:1px}.stats{margin:0 -18px;grid-template-columns:1fr}.chart{right:0}.pause{width:46px;height:46px}.sub{padding-right:40px}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;color:#25323a;background:#fff}.app{max-width:1050px;margin:8px auto;padding:28px 30px;background:#f6f7f9;border-radius:44px;position:relative}.top{display:grid;grid-template-columns:1fr 1px 1fr;gap:38px}.divider{background:#dfe4e8}h2{font-size:19px;margin:4px 0}.sub{font-size:14px;color:#66737c;min-height:38px}.pause{position:absolute;right:20px;top:18px;border:0;border-radius:50%;width:58px;height:58px;font-size:22px;font-weight:bold;cursor:pointer}.scene{height:380px;position:relative}.cyl{position:absolute;width:205px;height:205px;left:50%;transform:translateX(-50%);bottom:126px;border:6px solid #50626a;border-top:0;border-radius:0 0 12px 12px;background:#fafbfc}.piston{position:absolute;height:15px;left:-12px;right:-12px;bottom:70%;background:#405158;transition:bottom .35s}.rod{position:absolute;width:14px;height:60px;left:50%;bottom:100%;transform:translateX(-50%);background:#50626a}.gas-layer{position:absolute;left:8px;right:8px;bottom:8px;overflow:hidden;border-radius:0 0 6px 6px}
+#cvDots{top:31%}
+#cpDots{top:31%;transition:top .35s ease}
+.dot{position:absolute;width:11px;height:11px;border-radius:50%;background:#18b7c9}.heat{position:absolute;bottom:80px;left:50%;transform:translateX(-50%);font-size:20px;color:#ff5a45;font-weight:bold}.pressure{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:82px;height:82px;border-radius:50%;background:#e7eaee;text-align:center;padding-top:20px;font-size:11px;color:#77828a}.pressure b{display:block;font-size:18px;color:#18242a}.chart{position:absolute;width:225px;height:170px;bottom:4px;right:-112px;background:#fafbfc;border:1px solid #d9dde1;border-radius:10px;padding:9px;z-index:5}.chart svg{width:100%;height:142px;overflow:visible}.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #d9dee4;border-bottom:1px solid #d9dee4;margin:0 -30px}.stat{text-align:center;padding:20px 8px;font-size:19px}.stat b{display:block;font-size:23px;margin-top:7px;color:#111}.work b{color:#25a94f}.controls{padding-top:30px}.qrow{display:flex;justify-content:space-between;font-size:21px;margin-bottom:12px}.qrow output{font-size:23px;color:#111}input[type=range]{width:100%;accent-color:#3978ef}.presets{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:25px}.preset{border:0;background:#e8ecf1;border-radius:24px;padding:10px 18px;font-weight:bold;font-size:16px;cursor:pointer}.note{font-size:12px;color:#66737c;margin-top:18px;line-height:1.45}@media(max-width:780px){.app{padding:18px;border-radius:24px}.top{grid-template-columns:1fr}.divider{height:1px}.stats{margin:0 -18px;grid-template-columns:1fr}.chart{right:-102px;width:215px;height:168px;bottom:4px}.pause{width:46px;height:46px}.sub{padding-right:40px}}
+@media(max-width:780px){.top>div:first-child .chart{right:50%;transform:translateX(50%);bottom:-2px}.scene{padding-bottom:8px}.pressure{bottom:42px}}
 </style></head><body><main class="app">
 <header style="padding:0 0 18px;border-bottom:1px solid #d9dee4;margin-bottom:18px">
   <h1 style="font-size:clamp(24px,3vw,34px);margin:0 70px 7px 0;color:#17232a">Specific Heats of an Ideal Gas: C<sub>v</sub> vs C<sub>p</sub></h1>
@@ -18,18 +22,153 @@
     <strong style="color:#27343b">Assoc. Prof. Ts. Dr. Ang Kiang Long</strong> · i-CATS University College, Sarawak, Malaysia
   </div>
 </header>
-<button class="pause" id="pause">Ⅱ</button><section class="top"><div><h2>Constant Volume (Cv Cylinder)</h2><div class="sub">Rigid chamber. No expansion. All heat raises internal energy and temperature.</div><div class="scene"><div class="cyl" id="cvCyl"><div id="cvDots"></div><div class="piston"></div></div><div class="heat">Heat (Q)</div><div class="pressure">PRESSURE<b id="pV">1.00 atm</b></div><div class="chart"><div style="font-size:12px">Heating Curves (Q vs Temp)</div><svg viewBox="0 0 190 120"><line x1="18" y1="105" x2="180" y2="105" stroke="#444"/><line x1="18" y1="105" x2="18" y2="10" stroke="#444"/><line x1="20" y1="103" x2="180" y2="18" stroke="#ff5a45" stroke-width="2.5"/><line x1="20" y1="103" x2="180" y2="58" stroke="#3978ef" stroke-width="2.5"/><circle cx="20" cy="103" r="5" fill="#3978ef"/><text x="25" y="28" font-size="10" fill="#ff5a45">Cv (steeper)</text><text x="25" y="47" font-size="10" fill="#3978ef">Cp (shallower)</text></svg></div></div></div>
-<div class="divider"></div><div><h2>Constant Pressure (Cp Piston)</h2><div class="sub">Movable piston maintains constant pressure; heat splits into internal energy and expansion work.</div><div class="scene"><div class="cyl" id="cpCyl"><div id="cpDots"></div><div class="piston" id="pistonP"><div class="rod"></div></div></div><div class="heat">Heat (Q)</div><div class="pressure">PRESSURE<b>1.00 atm</b></div></div></div></section>
-<section class="stats"><div class="stat">Cv Gas Temp<b id="tV">300.0 K</b></div><div class="stat">Cp Gas Temp<b id="tP">300.0 K</b></div><div class="stat work">Cp Expansion Work<b id="work">0.0 J</b></div></section>
-<section class="controls"><div class="qrow"><b>Thermodynamic Heat Added (Q)</b><output id="qOut">0 Joules</output></div><input id="heat" type="range" min="0" max="5000" step="50" value="0"><div class="presets"><b>Quick Presets:</b><button class="preset" data-q="0">Initial State (300K)</button><button class="preset" data-q="2500">Medium Heat</button><button class="preset" data-q="5000">Maximum Heat</button></div><div class="note">Teaching model: 1 mol ideal monatomic gas, initially at 300 K and 1 atm. For the same heat input, ΔT = Q/(nC), so the constant-volume gas warms more because C<sub>v</sub> &lt; C<sub>p</sub>. At constant pressure, part of the heat input becomes boundary work.</div></section>
+<button class="pause" id="pause">Ⅱ</button><section class="top"><div><h2>Constant Volume (Cv Cylinder)</h2><div class="sub">Rigid chamber. No expansion. All heat raises internal energy and temperature.</div><div class="scene"><div class="cyl" id="cvCyl"><div id="cvDots" class="gas-layer"></div><div class="piston" id="pistonV"></div></div><div class="heat">Heat (Q)</div><div class="pressure">PRESSURE<b id="pV">1.00 atm</b></div><div class="chart"><div style="font-size:12px">Heating Curves (Q vs Temp) • live markers</div><svg viewBox="0 0 210 145" aria-label="Heat added versus temperature rise for Cv and Cp">
+  <!-- plot axes -->
+  <line x1="38" y1="112" x2="194" y2="112" stroke="#444" stroke-width="1.3"/>
+  <line x1="38" y1="112" x2="38" y2="15" stroke="#444" stroke-width="1.3"/>
+
+  <!-- Cv and Cp heating lines -->
+  <line id="cvLine" x1="38" y1="112" x2="180" y2="66" stroke="#ff5a45" stroke-width="2.5"/>
+  <line id="cpLine" x1="38" y1="112" x2="180" y2="25" stroke="#3978ef" stroke-width="2.5"/>
+
+  <!-- legend -->
+  <text x="47" y="30" font-size="9" fill="#3978ef">Cp (steeper)</text>
+  <text x="47" y="44" font-size="9" fill="#ff5a45">Cv</text>
+
+  <!-- live points -->
+  <circle id="cvPoint" cx="38" cy="112" r="4.5" fill="#ff5a45" stroke="#fff" stroke-width="1.3"/>
+  <circle id="cpPoint" cx="38" cy="112" r="4.5" fill="#3978ef" stroke="#fff" stroke-width="1.3"/>
+
+  <!-- live point labels, kept compact -->
+  <text id="cvDotLabel" x="44" y="106" font-size="8" fill="#ff5a45">Cv</text>
+  <text id="cpDotLabel" x="44" y="124" font-size="8" fill="#3978ef">Cp</text>
+
+  <!-- axis labels -->
+  <text x="116" y="139" text-anchor="middle" font-size="10" fill="#26343b">Temperature rise, ΔT (K)</text>
+  <text x="11" y="64" text-anchor="middle" font-size="10" fill="#26343b" transform="rotate(-90 11 64)">Heat added, Q (kJ)</text>
+</svg></div></div></div>
+<div class="divider"></div><div><h2>Constant Pressure (Cp Piston)</h2><div class="sub">Movable piston maintains constant pressure. As heat is added, the gas expands, the piston rises, and boundary work is performed.</div><div class="scene"><div class="cyl" id="cpCyl"><div id="cpDots" class="gas-layer"></div><div class="piston" id="pistonP"><div class="rod"></div></div></div>
+    <div id="workArrow" style="position:absolute;left:50%;transform:translateX(-50%);bottom:252px;color:#25a94f;font-weight:bold;font-size:14px;opacity:0;transition:opacity .2s,bottom .35s;white-space:nowrap;z-index:8">
+      <span style="font-size:25px;vertical-align:-2px">↑</span> W = PΔV
+    </div><div class="heat">Heat (Q)</div><div class="pressure">PRESSURE<b>1.00 atm</b></div></div></div></section>
+<section class="stats"><div class="stat">Cv Gas Temp<b id="tV">300.0 K</b></div><div class="stat">Cp Gas Temp<b id="tP">300.0 K</b></div><div class="stat work">Cp Expansion Work<b id="work">0.0 kJ</b></div></section>
+<section class="controls"><div class="qrow"><b>Thermodynamic Heat Added (Q)</b><output id="qOut">0.0 kJ</output></div><input id="heat" type="range" min="0" max="100000" step="1000" value="0"><div class="presets"><b>Quick Presets:</b><button class="preset" data-q="0">Initial State (300K)</button><button class="preset" data-q="50000">Medium Heat</button><button class="preset" data-q="100000">Maximum Heat</button></div><div class="note">Teaching model: 1 kg of air modeled as an ideal gas with constant specific heats, initially at 300 K and 1 atm. Values used: c<sub>v</sub> = 0.718 kJ/(kg·K), c<sub>p</sub> = 1.005 kJ/(kg·K), and R = 0.287 kJ/(kg·K), satisfying c<sub>p</sub> − c<sub>v</sub> = R. For the same heat input, ΔT = Q/(m c), so constant-volume heating produces a larger temperature rise because c<sub>v</sub> &lt; c<sub>p</sub>. The 18 blue dots are representative air molecules: their number remains fixed. As Q increases, their visual speed increases progressively; at the same Q, the hotter C<sub>v</sub> gas moves slightly faster than the C<sub>p</sub> gas.</div></section>
 <footer style="margin-top:24px;padding-top:17px;border-top:1px solid #d9dee4;text-align:center;color:#66737c;font-size:12px;line-height:1.55">
   <strong style="color:#35434b">Thermodynamics Interactive Learning Resource</strong><br>
   Developed by Assoc. Prof. Ts. Dr. Ang Kiang Long · i-CATS University College · Sarawak, Malaysia<br>
-  Educational simulation for illustrating the physical distinction between C<sub>v</sub> and C<sub>p</sub> in the ideal-gas model.
+  Educational simulation illustrating the physical distinction between C<sub>v</sub> and C<sub>p</sub> for air modeled as an ideal gas with constant specific heats.
 </footer>
 </main><script>
-(()=>{const R=8.314,Cv=1.5*R,Cp=2.5*R,T0=300;const heat=document.getElementById('heat'),qOut=document.getElementById('qOut'),tV=document.getElementById('tV'),tP=document.getElementById('tP'),pV=document.getElementById('pV'),work=document.getElementById('work'),pistonP=document.getElementById('pistonP'),pause=document.getElementById('pause');let running=true,phase=0;
-function dots(id){let b=document.getElementById(id);for(let i=0;i<18;i++){let d=document.createElement('i');d.className='dot';d.dataset.i=i;d.style.left=(7+(i*31)%88)+'%';d.style.bottom=(8+(i*47)%82)+'%';b.appendChild(d)}}dots('cvDots');dots('cpDots');
-function update(){let Q=+heat.value,TV=T0+Q/Cv,TP=T0+Q/Cp,r=TP/T0;qOut.value=Math.round(Q)+' Joules';tV.textContent=TV.toFixed(1)+' K';tP.textContent=TP.toFixed(1)+' K';pV.textContent=(TV/T0).toFixed(2)+' atm';work.textContent=(R*(TP-T0)).toFixed(1)+' J';pistonP.style.bottom=(100+Math.min(105,(r-1)*105))+'%';document.querySelectorAll('.dot').forEach(d=>{let i=+d.dataset.i,a=2+Q/900;d.style.transform='translate('+Math.sin(phase+i*1.7)*a+'px,'+Math.cos(phase*1.2+i)*a+'px)'})}
-heat.addEventListener('input',update);document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{heat.value=b.dataset.q;update()}));pause.addEventListener('click',()=>{running=!running;pause.textContent=running?'Ⅱ':'▶'});function tick(){if(running){phase+=.13;update()}requestAnimationFrame(tick)}update();tick()})();
+(()=>{const R=287,Cv=718,Cp=1005,T0=300;const heat=document.getElementById('heat'),qOut=document.getElementById('qOut'),tV=document.getElementById('tV'),tP=document.getElementById('tP'),pV=document.getElementById('pV'),work=document.getElementById('work'),pistonP=document.getElementById('pistonP'),cpDots=document.getElementById('cpDots'),workArrow=document.getElementById('workArrow'),pause=document.getElementById('pause'),cvPoint=document.getElementById('cvPoint'),cpPoint=document.getElementById('cpPoint'),cvDotLabel=document.getElementById('cvDotLabel'),cpDotLabel=document.getElementById('cpDotLabel');let running=true,phase=0;
+const chambers={cv:[],cp:[]};
+
+function createGas(id,key){
+  const box=document.getElementById(id);
+  for(let i=0;i<18;i++){
+    const d=document.createElement('i');
+    d.className='dot';
+    box.appendChild(d);
+
+    /* Spread particles through the chamber interior. Coordinates are percentages
+       of the clipped molecule layer, safely away from the walls. */
+    const x=10+((i*37)%78);
+    const y=10+((i*43)%78);
+    const angle=(i*2.3999632297)+(key==='cp'?0.7:0);
+    chambers[key].push({
+      el:d,x:x,y:y,
+      vx:Math.cos(angle),
+      vy:Math.sin(angle)
+    });
+  }
+}
+createGas('cvDots','cv');
+createGas('cpDots','cp');
+
+function update(){
+  let Q=+heat.value,TV=T0+Q/Cv,TP=T0+Q/Cp;
+  qOut.value=(Q/1000).toFixed(1)+' kJ';
+  tV.textContent=TV.toFixed(1)+' K';
+  tP.textContent=TP.toFixed(1)+' K';
+  pV.textContent=(TV/T0).toFixed(2)+' atm';
+  work.textContent=(R*(TP-T0)/1000).toFixed(1)+' kJ';
+  /* Both pistons begin at the same height at Q = 0.
+     Cv remains fixed. Cp rises as the gas expands at constant pressure.
+     For ideal-gas air at constant P: V2/V1 = T2/T1. */
+  const expansionRatio=TP/T0;
+  /* Both chambers have the same full wall height. Cp starts at the same
+     piston height as Cv and rises inside the extended side walls. */
+  const initialPistonPct=70;
+  const maxRisePct=28;
+  const pistonRise=Math.min(maxRisePct,(expansionRatio-1)*42);
+  pistonP.style.bottom=(initialPistonPct+pistonRise)+'%';
+  /* The particle region ends at the underside of the moving piston.
+     This makes the piston itself the upper collision boundary. */
+  cpDots.style.top=(100-(initialPistonPct+pistonRise)+2)+'%';
+
+  /* Show boundary-work notation only after heat is added. */
+  workArrow.style.opacity=Q>0?'1':'0';
+  workArrow.style.bottom=(252+pistonRise*2.0)+'px';
+
+  const f=Q/100000;
+  /* Move each point by interpolating directly between the endpoints of
+     its own coloured SVG line. This guarantees that the red marker remains
+     on the red Cv line and the blue marker remains on the blue Cp line. */
+  function pointOnLine(line,fraction){
+    const x1=Number(line.getAttribute('x1')), y1=Number(line.getAttribute('y1'));
+    const x2=Number(line.getAttribute('x2')), y2=Number(line.getAttribute('y2'));
+    return {x:x1+(x2-x1)*fraction,y:y1+(y2-y1)*fraction};
+  }
+  const cvPos=pointOnLine(document.getElementById('cvLine'),f);
+  const cpPos=pointOnLine(document.getElementById('cpLine'),f);
+  const xCv=cvPos.x,yCv=cvPos.y,xCp=cpPos.x,yCp=cpPos.y;
+  cvPoint.setAttribute('cx',xCv.toFixed(1)); cvPoint.setAttribute('cy',yCv.toFixed(1));
+  cpPoint.setAttribute('cx',xCp.toFixed(1)); cpPoint.setAttribute('cy',yCp.toFixed(1));
+  cvDotLabel.setAttribute('x',Math.min(xCv+5,184).toFixed(1)); cvDotLabel.setAttribute('y',Math.max(yCv-5,18).toFixed(1));
+  cpDotLabel.setAttribute('x',Math.min(xCp+5,184).toFixed(1)); cpDotLabel.setAttribute('y',Math.min(yCp+12,108).toFixed(1));
+}
+
+/* Particle speed follows temperature. Cv becomes hotter than Cp for the same Q,
+   so Cv particles move faster. Molecule count remains exactly 18 in each chamber. */
+function moveGas(list,T,Q,dt){
+  /* Make the visual speed respond clearly to the heat-input slider.
+     Q = 0 kJ   -> slow baseline molecular motion
+     Q = 100 kJ -> about 5x the baseline visual speed.
+     Temperature still differentiates Cv from Cp at the same Q. */
+  const qFraction=Math.max(0,Math.min(1,Q/100000));
+  const heatSpeed=0.35+1.65*qFraction;
+  const thermalFactor=Math.sqrt(T/T0);
+  const speedScale=0.012*heatSpeed*thermalFactor;
+  /* Reverse before the visible 11 px molecule reaches the wall. */
+  const min=7,max=91;
+
+  for(const p of list){
+    p.x += p.vx*speedScale*dt;
+    p.y += p.vy*speedScale*dt;
+
+    /* Elastic reflection at the container walls. Correct overshoot so a particle
+       never disappears beyond the boundary even on a slow frame. */
+    if(p.x<min){p.x=min+(min-p.x);p.vx=Math.abs(p.vx);}
+    if(p.x>max){p.x=max-(p.x-max);p.vx=-Math.abs(p.vx);}
+    if(p.y<min){p.y=min+(min-p.y);p.vy=Math.abs(p.vy);}
+    if(p.y>max){p.y=max-(p.y-max);p.vy=-Math.abs(p.vy);}
+
+    p.el.style.left=p.x+'%';
+    p.el.style.bottom=p.y+'%';
+    p.el.style.transform='none';
+  }
+}
+
+let lastTime=performance.now();
+function tick(now){
+  const dt=Math.min(32,Math.max(0,now-lastTime));
+  lastTime=now;
+  if(running){
+    const Q=+heat.value;
+    const TV=T0+Q/Cv, TP=T0+Q/Cp;
+    moveGas(chambers.cv,TV,Q,dt);
+    moveGas(chambers.cp,TP,Q,dt);
+  }
+  requestAnimationFrame(tick);
+}
+heat.addEventListener('input',update);document.querySelectorAll('.preset').forEach(b=>b.addEventListener('click',()=>{heat.value=b.dataset.q;update()}));pause.addEventListener('click',()=>{running=!running;lastTime=performance.now();pause.textContent=running?'Ⅱ':'▶'});update();requestAnimationFrame(tick)})();
 </script></body></html>
